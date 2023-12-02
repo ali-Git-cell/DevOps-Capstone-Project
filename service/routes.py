@@ -61,11 +61,11 @@ def create_accounts():
 # LIST ALL ACCOUNTS
 ######################################################################
 
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     """Lists all accounts"""
     app.logger.info("Request to list accounts")
-    
     accounts = Account.all()
     account_list = [account.serialize() for account in accounts]
     app.logger.info("Returning [%s] accounts", len(account_list))
@@ -115,9 +115,11 @@ def delete_accounts(account_id):
         account.delete()
     return "", status.HTTP_204_NO_CONTENT
 
+
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
 ######################################################################
+
 
 def check_content_type(media_type):
     """Checks that the media type is correct"""
